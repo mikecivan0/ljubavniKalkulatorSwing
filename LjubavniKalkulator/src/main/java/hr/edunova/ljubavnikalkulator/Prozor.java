@@ -135,7 +135,7 @@ public class Prozor extends javax.swing.JFrame {
                         .addComponent(lblNaslov, javax.swing.GroupLayout.DEFAULT_SIZE, 490, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 490, Short.MAX_VALUE)))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -144,7 +144,7 @@ public class Prozor extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(lblNaslov, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -157,19 +157,19 @@ public class Prozor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIzracunajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIzracunajActionPerformed
-        if(txtPrvaOsoba.getText().length() == 0 
-               || txtDrugaOsoba.getText().length() == 0){
-           lblIzracun.setText("Obavezno unesite imena obje osobe");
-           lblIcon.setIcon(null);
-       }else{
-           izracunaj();
-       }
+        if (txtPrvaOsoba.getText().length() == 0
+                || txtDrugaOsoba.getText().length() == 0) {
+            lblIzracun.setText("Obavezno unesite imena obje osobe");
+            lblIcon.setIcon(null);
+        } else {
+            izracunaj();
+        }
     }//GEN-LAST:event_btnIzracunajActionPerformed
 
     private void txtDrugaOsobaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDrugaOsobaKeyPressed
-       if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             btnIzracunajActionPerformed(null);
-        }       
+        }
     }//GEN-LAST:event_txtDrugaOsobaKeyPressed
 
     private void txtPrvaOsobaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrvaOsobaKeyPressed
@@ -177,8 +177,8 @@ public class Prozor extends javax.swing.JFrame {
             txtDrugaOsoba.requestFocus();
         }
      }//GEN-LAST:event_txtPrvaOsobaKeyPressed
-    
-    private void izracunaj(){
+
+    private void izracunaj() {
         String prvaOsoba, drugaOsoba, sveZajednoBezRazmaka, ispis;
         prvaOsoba = makniCrticeIRazmake(txtPrvaOsoba.getText().toLowerCase());
         drugaOsoba = makniCrticeIRazmake(txtDrugaOsoba.getText().toLowerCase());
@@ -198,8 +198,6 @@ public class Prozor extends javax.swing.JFrame {
         lblIzracun.setText(ispis);
         postaviSliku(zbroj);
     }
-
-    
 
     private void zbroji(List<Integer> nizBrojeva) {
         List<Integer> provjereniNizBrojeva = new ArrayList<Integer>();
@@ -304,10 +302,10 @@ public class Prozor extends javax.swing.JFrame {
     }
 
     private void postaviSliku(int zbroj) {
-       // putanju potrebno promijeniti ovisno o lokaciji
-       String rootPutanja = "C:\\Users\\Ivan\\Documents\\NetBeansProjects\\"
-               + "LjubavniKalkulatorSwing\\LjubavniKalkulator\\src\\main\\"
-               + "java\\hr\\edunova\\ljubavnikalkulator\\";
+        // putanju potrebno promijeniti ovisno o lokaciji
+        String rootPutanja = "C:\\Users\\Ivan\\Documents\\NetBeansProjects\\"
+                + "LjubavniKalkulatorSwing\\LjubavniKalkulator\\src\\main\\"
+                + "java\\hr\\edunova\\ljubavnikalkulator\\";
         String putanja = rootPutanja + "brokenHeart.png";
 
         if (zbroj >= 30 && zbroj < 50) {
@@ -321,7 +319,10 @@ public class Prozor extends javax.swing.JFrame {
         }
         ImageIcon icon = new ImageIcon(putanja);
         Image image = icon.getImage();
-        Image imageScaled = image.getScaledInstance(lblIcon.getWidth(), lblIcon.getHeight(), Image.SCALE_SMOOTH);
+        Image imageScaled = image.getScaledInstance(
+                lblIcon.getWidth(), 
+                lblIcon.getHeight(), 
+                Image.SCALE_SMOOTH);
         ImageIcon scaledIcon = new ImageIcon(imageScaled);
         lblIcon.setIcon(scaledIcon);
     }
@@ -329,7 +330,6 @@ public class Prozor extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIzracunaj;
     private javax.swing.JLabel jLabel1;
