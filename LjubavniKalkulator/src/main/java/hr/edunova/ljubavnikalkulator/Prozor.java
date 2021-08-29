@@ -302,22 +302,19 @@ public class Prozor extends javax.swing.JFrame {
     }
 
     private void postaviSliku(int zbroj) {
-        // putanju potrebno promijeniti ovisno o lokaciji
-        String rootPutanja = "C:\\Users\\Ivan\\Documents\\NetBeansProjects\\"
-                + "LjubavniKalkulatorSwing\\LjubavniKalkulator\\src\\main\\"
-                + "java\\hr\\edunova\\ljubavnikalkulator\\";
-        String putanja = rootPutanja + "brokenHeart.png";
+       
+        String imeSlike = "brokenHeart.png";
 
         if (zbroj >= 30 && zbroj < 50) {
-            putanja = rootPutanja + "notHappyHeart.png";
+            imeSlike = "notHappyHeart.png";
         }
         if (zbroj >= 50 && zbroj < 80) {
-            putanja = rootPutanja + "smileyHeart.png";
+            imeSlike = "smileyHeart.png";
         }
         if (zbroj >= 80) {
-            putanja = rootPutanja + "goldenHeart.png";
+            imeSlike = "goldenHeart.png";
         }
-        ImageIcon icon = new ImageIcon(putanja);
+        ImageIcon icon = new ImageIcon(imeSlike);
         Image image = icon.getImage();
         Image imageScaled = image.getScaledInstance(
                 lblIcon.getWidth(), 
