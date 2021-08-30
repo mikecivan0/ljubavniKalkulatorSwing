@@ -5,11 +5,13 @@
  */
 package hr.edunova.ljubavnikalkulator;
 
+import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.ImageIcon;
+import javax.swing.JSlider;
 
 /**
  *
@@ -18,13 +20,16 @@ import javax.swing.ImageIcon;
 public class Prozor extends javax.swing.JFrame {
 
     int zbroj;
+    String ispis;
+    JSlider slider;
 
     /**
      * Creates new form Prozor
      */
     public Prozor() {
         initComponents();
-        txtPrvaOsoba.requestFocus();
+        lblPoruka.setFont(new Font("MV Boli", Font.PLAIN, 15));
+        sldSkala.setFont(new Font("MV Boli", Font.PLAIN, 10));
     }
 
     /**
@@ -44,12 +49,12 @@ public class Prozor extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         btnIzracunaj = new javax.swing.JButton();
         lblIcon = new javax.swing.JLabel();
-        lblIzracun = new javax.swing.JLabel();
+        sldSkala = new javax.swing.JSlider();
+        lblPoruka = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(247, 230, 247));
         setFocusable(false);
-        setPreferredSize(new java.awt.Dimension(500, 500));
         setResizable(false);
 
         lblNaslov.setFont(new java.awt.Font("Segoe Print", 1, 18)); // NOI18N
@@ -95,7 +100,7 @@ public class Prozor extends javax.swing.JFrame {
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE))
                 .addGap(50, 50, 50))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(182, 182, 182)
+                .addGap(200, 200, 200)
                 .addComponent(btnIzracunaj)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -117,7 +122,17 @@ public class Prozor extends javax.swing.JFrame {
 
         lblIcon.setMinimumSize(new java.awt.Dimension(100, 100));
 
-        lblIzracun.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        sldSkala.setMajorTickSpacing(25);
+        sldSkala.setMinorTickSpacing(10);
+        sldSkala.setPaintLabels(true);
+        sldSkala.setPaintTicks(true);
+        sldSkala.setValue(0);
+        sldSkala.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        sldSkala.setEnabled(false);
+        sldSkala.setFocusable(false);
+        sldSkala.setPreferredSize(new java.awt.Dimension(326, 45));
+        sldSkala.setRequestFocusEnabled(false);
+        sldSkala.setVerifyInputWhenFocusTarget(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -128,11 +143,13 @@ public class Prozor extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(42, 42, 42)
                         .addComponent(lblIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(100, 100, 100)
-                        .addComponent(lblIzracun, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(30, 30, 30)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblPoruka, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(sldSkala, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(lblNaslov, javax.swing.GroupLayout.DEFAULT_SIZE, 490, Short.MAX_VALUE))
+                        .addComponent(lblNaslov, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -145,11 +162,15 @@ public class Prozor extends javax.swing.JFrame {
                 .addComponent(lblNaslov, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lblIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblIzracun, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(39, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(sldSkala, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblPoruka, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();
@@ -157,9 +178,10 @@ public class Prozor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIzracunajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIzracunajActionPerformed
+        postaviPocetneVrijednosti();
         if (txtPrvaOsoba.getText().length() == 0
                 || txtDrugaOsoba.getText().length() == 0) {
-            lblIzracun.setText("Obavezno unesite imena obje osobe");
+            lblPoruka.setText("Obavezno unesite imena obje osobe");
             lblIcon.setIcon(null);
         } else {
             izracunaj();
@@ -179,7 +201,7 @@ public class Prozor extends javax.swing.JFrame {
      }//GEN-LAST:event_txtPrvaOsobaKeyPressed
 
     private void izracunaj() {
-        String prvaOsoba, drugaOsoba, sveZajednoBezRazmaka, ispis;
+        String prvaOsoba, drugaOsoba, sveZajednoBezRazmaka;
         prvaOsoba = makniCrticeIRazmake(txtPrvaOsoba.getText().toLowerCase());
         drugaOsoba = makniCrticeIRazmake(txtDrugaOsoba.getText().toLowerCase());
         sveZajednoBezRazmaka = prvaOsoba + drugaOsoba;
@@ -195,8 +217,7 @@ public class Prozor extends javax.swing.JFrame {
         ispis = prvaVelikaSlova(txtPrvaOsoba.getText()) + " i "
                 + prvaVelikaSlova(txtDrugaOsoba.getText())
                 + " se vole " + zbroj + "%";
-        lblIzracun.setText(ispis);
-        postaviSliku(zbroj);
+        popuniVrijednosti();
     }
 
     private void zbroji(List<Integer> nizBrojeva) {
@@ -302,7 +323,7 @@ public class Prozor extends javax.swing.JFrame {
     }
 
     private void postaviSliku(int zbroj) {
-       
+
         String imeSlike = "brokenHeart.png";
 
         if (zbroj >= 30 && zbroj < 50) {
@@ -317,8 +338,8 @@ public class Prozor extends javax.swing.JFrame {
         ImageIcon icon = new ImageIcon(imeSlike);
         Image image = icon.getImage();
         Image imageScaled = image.getScaledInstance(
-                lblIcon.getWidth(), 
-                lblIcon.getHeight(), 
+                lblIcon.getWidth(),
+                lblIcon.getHeight(),
                 Image.SCALE_SMOOTH);
         ImageIcon scaledIcon = new ImageIcon(imageScaled);
         lblIcon.setIcon(scaledIcon);
@@ -333,10 +354,39 @@ public class Prozor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblIcon;
-    private javax.swing.JLabel lblIzracun;
     private javax.swing.JLabel lblNaslov;
+    private javax.swing.JLabel lblPoruka;
+    private javax.swing.JSlider sldSkala;
     private javax.swing.JTextField txtDrugaOsoba;
     private javax.swing.JTextField txtPrvaOsoba;
     // End of variables declaration//GEN-END:variables
+
+    private void popuniVrijednosti() {
+        Thread t1;
+        t1 = new Thread(() -> {
+            int i = 0;
+            while (i <= zbroj) {
+                sldSkala.setValue(i++);
+                try {
+                    Thread.sleep(10);
+                } catch (InterruptedException ex) {
+
+                }
+            }
+            lblPoruka.setText(ispis);
+            postaviSliku(zbroj);
+        });
+        t1.start();
+
+    }
+
+    private void postaviPocetneVrijednosti() {       
+        txtPrvaOsoba.requestFocus();
+        slider = new JSlider();
+        ispis = "";
+        lblIcon.setIcon(null);
+        lblPoruka.setText(ispis);
+        slider.setValue(0);
+    }
 
 }
